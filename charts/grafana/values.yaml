@@ -157,16 +157,17 @@ podPortName: grafana
 ##
 service:
   enabled: true
-  type: ClusterIP
+  type: NodePort
   port: 80
   targetPort: 3000
     # targetPort: 4181 To be used with a proxy extraContainer
+  nodePort: 32754
   ## Service annotations. Can be templated.
   annotations: {}
   labels: {}
   portName: service
   # Adds the appProtocol field to the service. This allows to work with istio protocol selection. Ex: "http" or "tcp"
-  appProtocol: ""
+  appProtocol: "http"
 
 serviceMonitor:
   ## If true, a ServiceMonitor CRD is created for a prometheus operator
